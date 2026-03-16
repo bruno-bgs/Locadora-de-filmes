@@ -77,7 +77,6 @@ Ao executar o sistema, o menu principal será exibido no terminal:
 2 - Cadastrar filme  
 3 - Listar filmes  
 4 - Alugar filme  
-5 - Devolver filme  
 0 - Sair  
 
 Escolha uma opção:
