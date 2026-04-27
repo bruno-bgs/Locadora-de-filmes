@@ -1,93 +1,147 @@
-# Sistema de Locadora de Filmes
+# Locadora de Filmes
 
-Este projeto é um sistema simples de locadora de filmes desenvolvido em Python.  
-Ele permite gerenciar filmes e clientes, além de controlar o aluguel e devolução de filmes através de um menu interativo no terminal.
+Aplicação web para cadastro de filmes e clientes, controle de aluguéis e devoluções.
 
-O objetivo do projeto é aplicar conceitos básicos de programação, como:
-- estruturas de dados
-- funções
-- lógica de programação
-- interação com o usuário pelo terminal
-
----
+O projeto foi feito para praticar integração entre frontend, backend e banco de dados em um fluxo simples de locadora.
 
 ## Funcionalidades
 
-O sistema possui as seguintes funcionalidades:
-
 - Cadastro de filmes
 - Cadastro de clientes
-- Listagem de filmes disponíveis
-- Aluguel de filmes
-- Devolução de filmes
+- Listagem de filmes
 - Controle de disponibilidade dos filmes
+- Registro de aluguéis
+- Registro de devoluções
+- Visualização de aluguéis em andamento e devolvidos
 
----
+## Tecnologias
 
-## Tecnologias Utilizadas
+### Frontend
 
-Este projeto foi desenvolvido utilizando:
+- React
+- Vite
+- CSS
 
-- Python 3
-- Terminal / CLI (Interface de Linha de Comando)
-- Estruturas de dados (listas e dicionários)
+### Backend
 
----
+- Python
+- Flask
+- mysql-connector-python
 
-## Estrutura do Projeto
+### Banco de dados
 
-A organização básica do projeto é a seguinte:
+- MySQL
 
-locadora/
+## Estrutura do projeto
 
-│  
-├── main.py  
-├── filmes.py  
-├── clientes.py  
-└── README.md  
+```text
+locadora-filmes/
+├── backend/
+│   ├── app.py
+│   ├── clientes.py
+│   ├── conexao.py
+│   ├── filmes.py
+│   └── inserir.py
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   ├── package.json
+│   └── vite.config.js
+└── README.md
+```
 
-- main.py → arquivo principal que executa o sistema  
-- filmes.py → funções relacionadas ao gerenciamento de filmes  
-- clientes.py → funções relacionadas ao gerenciamento de clientes  
-- README.md → documentação do projeto  
+## Como executar
 
----
+### 1. Clone o repositório
 
-## Como Executar o Projeto
+```bash
+git clone <url-do-repositorio>
+cd locadora-filmes
+```
 
-Para executar o sistema, siga os passos abaixo:
+### 2. Configure o banco de dados
 
-1. Instale o Python 3 em seu computador
-2. Baixe ou clone este repositório
+O backend usa MySQL local. A conexão atual está em `backend/conexao.py`.
 
-git clone https://github.com/seu-usuario/locadora.git
+Verifique se:
 
-3. Acesse a pasta do projeto
+- o MySQL está em execução
+- o banco `locadora` existe
+- o usuário e a senha configurados em `conexao.py` estão corretos
 
-cd locadora
+Exemplo atual:
 
-4. Execute o arquivo principal
+```python
+host="localhost"
+user="root"
+password="root"
+database="locadora"
+```
 
-python main.py
+### 3. Instale as dependências do backend
 
----
+Na pasta `backend`:
 
-## Exemplo de Uso
+```bash
+pip install flask mysql-connector-python
+```
 
-Ao executar o sistema, o menu principal será exibido no terminal:
+### 4. Inicie o backend
 
-===== LOCADORA DE FILMES =====
+```bash
+cd backend
+python app.py
+```
 
-1 - Cadastrar cliente  
-2 - Cadastrar filme  
-3 - Listar filmes  
-4 - Alugar filme  
-5 - Devolver filme  
-0 - Sair  
+O backend ficará disponível em:
 
-Escolha uma opção:
+- `http://localhost:5000/`
 
----
+### 5. Instale as dependências do frontend
+
+Em outro terminal:
+
+```bash
+cd frontend
+npm install
+```
+
+### 6. Inicie o frontend
+
+```bash
+npm run dev
+```
+
+O frontend ficará disponível em:
+
+- `http://localhost:5173/`
+
+## Rotas principais da API
+
+- `GET /filmes`
+- `POST /filmes`
+- `GET /clientes`
+- `POST /clientes`
+- `GET /alugueis`
+- `POST /alugueis`
+- `POST /devolucoes`
+
+## Observações
+
+- O frontend consome a API local em `http://localhost:5000`
+- Para o cadastro funcionar no navegador, o backend já está configurado para aceitar requisições do frontend local
+- O projeto ainda é voltado para ambiente local de estudo
+
+## Melhorias futuras
+
+- Separar melhor os componentes do frontend
+- Padronizar respostas da API
+- Adicionar variáveis de ambiente para configuração
+- Melhorar validações de formulário
+- Publicar uma versão online para demonstração
 
 ## Autor
 
